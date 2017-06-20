@@ -1,4 +1,7 @@
 require 'bundler/setup'
-Bundler.require
+# require 'csv'
+# require 'json'
 
+Bundler.require
+#CSV.require
 require_all 'app'
