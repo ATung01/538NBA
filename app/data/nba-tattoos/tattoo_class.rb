@@ -12,10 +12,10 @@ require 'pry'
 
 
 # puts transformed_data
-binding.pry
+# binding.pry
 class CreateTattoo
 
-  extracted_data   = CSV.table("./nba-tattoos/nba_tattoos.csv")
+  extracted_data   = CSV.table("./nba_tattoos.csv")
   transformed_data = extracted_data.map { |row| row.to_hash } #turns extracted data into hash
 
   sql = <<-SQL
@@ -25,7 +25,7 @@ class CreateTattoo
   tattoo Boolean)
   SQL
 
-  db = SQLite3::Database.new("./nba-tattoos/tattoos.db")
+  db = SQLite3::Database.new("./tattoos.db")
   db.execute("DROP TABLE IF EXISTS tattoos;")
   db.execute(sql)
 
