@@ -1,6 +1,6 @@
-require_relative './environment.rb'
-require_relative './crapp/tattoo_class.rb'
-require_relative './crapp/nba_projections_class.rb'
+require_relative '../environment.rb'
+require_relative './tattoo_class.rb'
+require_relative './nba_projections_class.rb'
 
 class Runner
   def self.run

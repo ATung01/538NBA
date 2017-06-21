@@ -4,7 +4,8 @@ require 'bundler/setup'
 
 Bundler.require
 #CSV.require
-require_all 'app'
+require_all 'crapp'
 
-# @db = SQLite3::Database.new('data/nba-tattoos/tattoo.db')
-@db.execute("DROP TABLE IF EXISTS tattos;")
+# db = SQLite3::Database.new('./crapp/nba_database.db')
+# db.execute("DROP TABLE IF EXISTS tattoos;")
+# db.execute("DROP TABLE IF EXISTS draft;")
