@@ -16,7 +16,7 @@ class Runner
     db.execute("SELECT name from sqlite_master where type='table';").flatten.each do |table_name|
       puts "Created a table for #{table_name} \n"
     end
-  questions = Queries.top_ten_busts
+  questions = Queries.most_likely
   end
 end
 

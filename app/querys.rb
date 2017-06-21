@@ -15,9 +15,15 @@ class Queries
       puts "The player #{player[0]} has a bust likelihood of #{(player[1] * 100).round(2)}% and #{player[2]} have a tattoo."
     end
     puts "\n#{has_tattoo} out of the top 10 players most likely to bust have tattoos."
+  end
 
+  def self.most_likely
+    @db.execute("Select drafts.player, drafts.starter, drafts.role_player, drafts.bust, tattoos.tattoo From drafts Inner Join tattoos On drafts.player = tattoos.player_name Order By tattoos.tattoo").each do |player|
+      best_stat_number = player.select{|x| x.class == Float }.max
+      best_stat = @db.execute("Select column_name From information_schema.columns Where ")
 
-
+      puts "The player #{player[0]} has a #{best_stat} likelihood of #{(best_stat_number * 100).round(2)}%."
+    end
 
   end
 
