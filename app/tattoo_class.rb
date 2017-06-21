@@ -7,7 +7,7 @@ class CreateTattoo
 
   def self.run
 
-    extracted_data   = CSV.table("./nba_tattoos.csv")
+    extracted_data   = CSV.table("./app/nba_tattoos.csv")
     transformed_data = extracted_data.map { |row| row.to_hash }
 
     sql = <<-SQL
@@ -17,7 +17,7 @@ class CreateTattoo
     tattoo Boolean)
     SQL
 
-    db = SQLite3::Database.new("./nba_database.db")
+    db = SQLite3::Database.new("./app/nba_database.db")
     db.execute("DROP TABLE IF EXISTS tattoos;")
     db.execute(sql)
 
@@ -26,11 +26,14 @@ class CreateTattoo
       db.execute(insert_sql, data[:player_name], data[:tattoos_yesno])
     end
 
-    p db.execute("Select * from tattoos")
+    # p db.execute("Select * from tattoos")
 
   end
 
+  # def self.name
+    # db.execute("Select ")
+
 end
 
-tattoo = CreateTattoo.new
-tattoo.run
+# new_tattoo = CreateTattoo.new
+# new_tattoo.run

@@ -7,7 +7,7 @@ class NbaProjections
 
   def self.run
 
-    extracted_data = CSV.table("./historical_projections.csv")
+    extracted_data = CSV.table("./app/historical_projections.csv")
     transformed_data = extracted_data.map { |row| row.to_hash }
 
     sql = <<-SQL
@@ -24,7 +24,7 @@ class NbaProjections
     bust REAL)
     SQL
 
-    db = SQLite3::Database.new("./nba_database.db")
+    db = SQLite3::Database.new("./app/nba_database.db")
     db.execute("DROP TABLE IF EXISTS drafts;")
     db.execute(sql)
 
@@ -33,11 +33,12 @@ class NbaProjections
       db.execute(insert_sql, data[:player], data[:position], data[:id], data[:draft_year], data[:projected_spm], data[:superstar], data[:starter], data[:role_player], data[:bust])
     end
 
-    p db.execute("Select * from drafts")
 
   end
 
+  # p db.execute("Select * from drafts")
+
 end
 
-draft = NbaProjections.new
-draft.run
+# draft = Nba/Projections.new
+# draft.run
